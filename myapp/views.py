@@ -11,6 +11,17 @@ def portfolio(request):
     return render(request,'myapp/portfolio.html')
 
 def contact(request):
-    return render(request,'myapp/contact.html')    
+    #print(request.method)
+    if request.method == 'POST':
+        email_r = request.POST.get('email')
+        subject_r = request.POST.get('subject')
+        message_r = request.POST.get('message')
+
+        #c = contact(email=email_r,subject=subject_r,message=message_r)
+        #c.save()
+
+        return render(request,'myapp/contact.html') 
+    else:
+        return render(request,'myapp/contact.html')
 
 # Create your views here.
